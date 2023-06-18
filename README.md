@@ -24,7 +24,7 @@ The following fields are able to be modified with this package:
 | WEB_DB_SITE       | Any (Only if WEB_OR_DATABASE is set to true)              | Chicago
 | WEB_DB_INSTANCE   | Any (Only if WEB_OR_DATABASE is set to true)              | test01
 
-[^1]: Application Review, Boundary Security, CDS Admin Review, CDS Technical Review, Database Review, Domain Name System (DNS), Exchange Server, Host Based System Security (HBSS), Internal Network, Mobility, Releasable Networks (REL), Traditional Security, UNIX OS, VVOIP Review, Web Review, Windows OS, Other Review
+[^1]: TECH_AREA Options: Application Review, Boundary Security, CDS Admin Review, CDS Technical Review, Database Review, Domain Name System (DNS), Exchange Server, Host Based System Security (HBSS), Internal Network, Mobility, Releasable Networks (REL), Traditional Security, UNIX OS, VVOIP Review, Web Review, Windows OS, Other Review
 
 
 ### vKey Data
