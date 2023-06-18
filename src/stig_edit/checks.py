@@ -13,7 +13,7 @@ def check_file_and_keys(file_name, key, write_location, available_inputs):
         print(f'Permission denied for file: {file_name}')
     else:
         with open(file_name, 'r', encoding='utf-8') as ckl:
-            ckl_dict = xmltodict.parse(ckl.read())
+            #ckl_dict = xmltodict.parse(ckl.read())
             if write_location == 'target_data':
                 available_keys = available_inputs
             elif write_location == 'vkey_data':

@@ -1,6 +1,7 @@
 import xmltodict
 import json
-import checks
+import stig_edit.checks as checks
+#from src.stig_edit import checks
 
 #Read CKL Target Data
 def read_target_data(file_name):

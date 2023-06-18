@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling","xmltodict","json"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
 name = "stig_edit"
-version = "0.0.1"
+version = "1.0.1"
 authors = [
   { name="fourhole", email="fourhole7@gmail.com" },
 ]
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/FourHole/stig_edit"
+"Bug Tracker" = "https://github.com/FourHole/stig_edit/issues"
