@@ -92,7 +92,7 @@ target_values=ckl_editor.load_target_data("test.ckl")
 ```
 ---
 
-### **write_target_data**(*file_name*, *key*, *value*, *target_list*)\
+### **write_target_data**(*file_name*, *key*, *value*, *target_list*)
 
 This module can write to any of the Target Data fields shown in the *Editable Fields/Target Data* section. Note the values because some fields must match a list of predefined values or the STIG Viewer will not be able to open the file.
 
