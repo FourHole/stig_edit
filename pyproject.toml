@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling","xmltodict","json"]
+build-backend = "hatchling.build"
+
+[project]
+name = "stig_edit"
+version = "0.0.1"
+authors = [
+  { name="fourhole", email="fourhole7@gmail.com" },
+]
+description = "A small package that allows you to easily edit STIG (CKL files) quickly."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
