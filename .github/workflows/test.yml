@@ -16,6 +16,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip build twine xmltodict pylint
+      - name: Build python package
+        run: |
+          python -m build
       - name: Run lint Test
         run: |
           pylint $(git ls-files *.py)
@@ -26,7 +29,6 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
       - name: Run unit test
         run: |
-          python build
           cd tests
           python -m pip install --index-url https://test.pypi.org/simple/ stig_edit
           python -m unittest test_stig_edit.py
