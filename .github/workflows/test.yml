@@ -22,13 +22,13 @@ jobs:
       - name: Build python package
         run: |
           python -m build
-      - name: Publish distribution 📦 to Test PyPI for further testing
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository-url: https://test.pypi.org/legacy/
-      - name: Run unit test
+      - name: Run unit test 
         run: |
           cd tests
-          python -m pip install --index-url https://test.pypi.org/simple/ stig_edit
+          python -m pip install -e . stig_edit
           python -m unittest test_stig_edit.py
+      #- name: Publish distribution 📦 to Test PyPI for further testing
+      #  uses: pypa/gh-action-pypi-publish@release/v1
+      #  with:
+      #    password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      #    repository-url: https://test.pypi.org/legacy/

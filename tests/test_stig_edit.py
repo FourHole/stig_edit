@@ -34,7 +34,7 @@ class TestStigEdit(unittest.TestCase):
         value = 'Member Server'
         #print(target_values)
 
-        ckl_editor.write_target_data(   file_name="./tests/test.ckl",
+        ckl_editor.write_target_data(   file_name=TEST_FILE,
                                         key=key,
                                         value=value
                                     )
@@ -52,7 +52,7 @@ class TestStigEdit(unittest.TestCase):
         finding_details = "Server was patched.\nThis is not a finding"
         comment = "This is a test comment."
 
-        ckl_editor.write_vkey_data( file_name="./tests/test.ckl",
+        ckl_editor.write_vkey_data( file_name=TEST_FILE,
                                     key=key,
                                     status=value,
                                     finding_details=finding_details,
