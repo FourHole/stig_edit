@@ -19,9 +19,13 @@ jobs:
       - name: Run lint Test
         run: |
           pylint $(git ls-files *.py)
+      - name: Publish distribution 📦 to Test PyPI for further testing
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository-url: https://test.pypi.org/legacy/
       - name: Run unit test
         run: |
-          python -m unittest tests/test_stig_edit.py
-      - name: Get pip versions of stig_edit
-        run: |
-          python -m pip versions --index-url https://test.pypi.org/simple/ stig_edit
+          cd tests
+          python -m pip install --index-url https://test.pypi.org/simple/ stig_edit
+          python -m unittest test_stig_edit.py
