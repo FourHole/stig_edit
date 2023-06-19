@@ -1,5 +1,9 @@
 name: Test and publish python package to PyPi
-on: [push]
+on:
+  push:
+    branches:
+      - '*'
+      - '!main'
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,3 +22,6 @@ jobs:
       - name: Run unit test
         run: |
           python -m unittest tests/test_stig_edit.py
+      - name: Get pip versions of stig_edit
+        run: |
+          python -m pip versions --index-url https://test.pypi.org/simple/ stig_edit
