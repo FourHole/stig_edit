@@ -1,5 +1,5 @@
 """
-Module providing tests and error handling to prevent ckl file corruption and thaty it exists with 
+Module providing error handling to prevent ckl file corruption and thaty it exists with 
 the correct permissions
 """
 import os
