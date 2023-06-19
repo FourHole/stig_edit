@@ -26,33 +26,17 @@ class TestStigEdit(unittest.TestCase):
         result = ckl_editor.read_target_data(TEST_FILE)
         self.assertIsNotNone(result)
 
-    def test_load_target_data(self):
-
-        '''Test the load_target_data function'''
-
-        result = ckl_editor.load_target_data("./tests/test.ckl")
-        self.assertIsNotNone(result)
-
-    def test_load_vkey_data(self):
-
-        '''Test the load_vkey_data function'''
-
-        result = ckl_editor.load_vkey_data("./tests/test.ckl")
-        self.assertIsNotNone(result)
-
     def test_write_target_data(self):
 
         '''Test the write_target_data function'''
 
         key = 'ROLE'
         value = 'Member Server'
-        target_values = ckl_editor.load_target_data(TEST_FILE)
         #print(target_values)
 
         ckl_editor.write_target_data(   file_name="./tests/test.ckl",
                                         key=key,
-                                        value=value,
-                                        target_list=target_values
+                                        value=value
                                     )
 
         with open(TEST_FILE, 'r', encoding='utf-8') as ckl:
@@ -65,7 +49,6 @@ class TestStigEdit(unittest.TestCase):
 
         key = 'V-230222'
         value = 'Not_Reviewed'
-        vkeylist = ckl_editor.load_vkey_data(TEST_FILE)
         finding_details = "Server was patched.\nThis is not a finding"
         comment = "This is a test comment."
 
@@ -73,8 +56,7 @@ class TestStigEdit(unittest.TestCase):
                                     key=key,
                                     status=value,
                                     finding_details=finding_details,
-                                    comments=comment,
-                                    vkeylist=vkeylist
+                                    comments=comment
                                 )
 
         with open(TEST_FILE, 'r', encoding='utf-8') as ckl:

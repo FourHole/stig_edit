@@ -25,12 +25,17 @@ def read_target_data(file_name):
     return target_data
 
 
-def write_target_data(file_name, key, value, target_list):
+def write_target_data(file_name, key, value):
 
     '''Write to CKL Target Data'''
 
+    with open(file_name, 'r', encoding='utf-8') as ckl:
+        ckl_dict = xmltodict.parse(ckl.read())
+
+        target_values = ckl_dict['CHECKLIST']['ASSET'].keys()
+
     #Error out if the file is not found, is a directory, or incorrect permissions on the file
-    handler.check_file_and_keys(file_name=file_name, key=key, available_inputs=target_list)
+    handler.check_file_and_keys(file_name=file_name, key=key, available_inputs=target_values)
 
     #Set the new value
     with open(file_name, 'r+', encoding='utf-8') as ckl:
@@ -61,9 +66,19 @@ def write_target_data(file_name, key, value, target_list):
 
     print(f"Finished rebuilding CKL file with new {key} added.")
 
-def write_vkey_data(file_name, key, status, finding_details, comments, vkeylist):
+def write_vkey_data(file_name, key, status, finding_details, comments):
 
     '''Write to CKL vKey'''
+
+    vkeylist = []
+
+    with open(file_name, 'r', encoding='utf-8') as ckl:
+        ckl_dict = xmltodict.parse(ckl.read())
+
+        for vuln in ckl_dict['CHECKLIST']['STIGS']['iSTIG']['VULN']:
+            for attribute in vuln['STIG_DATA']:
+                if str(attribute['ATTRIBUTE_DATA']).startswith('V-'):
+                    vkeylist.append(attribute['ATTRIBUTE_DATA'])
 
     handler.check_file_and_keys(file_name=file_name, key=key, available_inputs=vkeylist)
 
@@ -96,29 +111,3 @@ def write_vkey_data(file_name, key, status, finding_details, comments, vkeylist)
         for number,line in enumerate(lines):
             if number not in [2]:
                 ckl.writelines(line)
-
-def load_vkey_data(file_name):
-
-    '''Load STIG vKeys'''
-
-    vkeylist = []
-
-    with open(file_name, 'r', encoding='utf-8') as ckl:
-        ckl_dict = xmltodict.parse(ckl.read())
-
-        for vuln in ckl_dict['CHECKLIST']['STIGS']['iSTIG']['VULN']:
-            for attribute in vuln['STIG_DATA']:
-                if str(attribute['ATTRIBUTE_DATA']).startswith('V-'):
-                    vkeylist.append(attribute['ATTRIBUTE_DATA'])
-
-    return vkeylist
-
-def load_target_data(file_name):
-
-    '''Load Target Values'''
-
-    with open(file_name, 'r', encoding='utf-8') as ckl:
-        ckl_dict = xmltodict.parse(ckl.read())
-
-        target_values = ckl_dict['CHECKLIST']['ASSET'].keys()
-    return target_values
