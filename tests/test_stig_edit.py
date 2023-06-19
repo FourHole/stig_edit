@@ -13,7 +13,7 @@ import unittest
 import xmltodict
 from stig_edit import ckl_editor
 
-TEST_FILE = "./tests/test.ckl"
+TEST_FILE = "test.ckl"
 
 class TestStigEdit(unittest.TestCase):
 

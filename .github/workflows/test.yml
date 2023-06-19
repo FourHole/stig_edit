@@ -16,12 +16,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip build twine xmltodict pylint
-      - name: Build python package
-        run: |
-          python -m build
       - name: Run lint Test
         run: |
           pylint $(git ls-files *.py)
+      - name: Build python package
+        run: |
+          python -m build
       - name: Publish distribution 📦 to Test PyPI for further testing
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
