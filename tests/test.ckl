@@ -351,7 +351,7 @@ If the operating system is in non-compliance with the Information Assurance Vuln
 				<STATUS>Not_Reviewed</STATUS>
 				<FINDING_DETAILS>Server was patched.
 This is not a finding</FINDING_DETAILS>
-				<COMMENTS>No Comment.</COMMENTS>
+				<COMMENTS>This is a test comment.</COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
 				<SEVERITY_JUSTIFICATION></SEVERITY_JUSTIFICATION>
 			</VULN>

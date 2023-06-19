@@ -1,6 +1,6 @@
 import json
 import xmltodict
-import stig_edit.checks as checks
+import src.stig_edit.handler as handler
 
 #Read CKL Target Data
 def read_target_data(file_name):
@@ -16,7 +16,7 @@ def read_target_data(file_name):
 def write_target_data(file_name, key, value, target_list):
 
     #Error out if the file is not found, is a directory, or incorrect permissions on the file
-    checks.check_file_and_keys(file_name=file_name, key=key, available_inputs=target_list)
+    handler.check_file_and_keys(file_name=file_name, key=key, available_inputs=target_list)
 
     #Set the new value   
     with open(file_name, 'r+', encoding='utf-8') as ckl:
@@ -50,7 +50,7 @@ def write_target_data(file_name, key, value, target_list):
 #Write to CKL vKey
 def write_vkey_data(file_name, key, status, finding_details, comments, vkeylist):
 
-    checks.check_file_and_keys(file_name=file_name, key=key, available_inputs=vkeylist)
+    handler.check_file_and_keys(file_name=file_name, key=key, available_inputs=vkeylist)
 
     with open(file_name, 'r', encoding='utf-8') as ckl:
         ckl_dict = xmltodict.parse(ckl.read())
