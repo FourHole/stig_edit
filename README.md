@@ -55,43 +55,6 @@ print(ckl_editor.read_target_data("test.ckl"))
 
 ---
 
-### **load_vkey_data**(*filename*)
-
-This module loads all available vkeys that can be passed to the *write_vkey_data()* module to ensure that you do not try to edit a vkey that does not exists in the stig file you are parsing. 
-
-You should run this before running the *write_vkey_data()* module or use it as an input into it.
-
-| Parameters        | Description                                               | Examples         | Required |
-|:------------------|:----------------------------------------------------------|:-----------------|:---------|
-| filename          | Filename of CKL file to parse.                            | testfile.txt     | yes
-
-#### Example
-```python
-import ckl_editor
-
-vkeylist = ckl_editor.load_vkey_data("test.ckl")
-```
-
----
-
-### **load_target_data**(*file_name*)
-
-This is used to load all of the available target data for the STIG.
-
-You should run this before running the *write_target_data()* or use it as an input into it
-
-| Parameters        | Description                                               | Examples         | Required |
-|:------------------|:----------------------------------------------------------|:-----------------|:---------|
-| filename          | Filename of CKL file to parse.                            | testfile.txt     | yes
-
-#### Example
-```python
-import ckl_editor
-
-target_values=ckl_editor.load_target_data("test.ckl")
-```
----
-
 ### **write_target_data**(*file_name*, *key*, *value*, *target_list*)
 
 This module can write to any of the Target Data fields shown in the *Editable Fields/Target Data* section. Note the values because some fields must match a list of predefined values or the STIG Viewer will not be able to open the file.
@@ -103,15 +66,12 @@ Before running this module, you need to run the *load_target_data()* module and 
 | filename          | Filename of CKL file to parse.                            | testfile.txt     | yes      
 | key               | Target field name that you want to edit                   | ROLE             | yes      
 | value             | The value that you want to set the target field to        | Workstation      | yes      
-| target_list       | The list of editable targets from *load_target_data()*    | load_target_data("test.txt")| yes
 
 #### Example
 ```python
 import ckl_editor
 
-target_values=ckl_editor.load_target_data("test.ckl")
-
-ckl_editor.write_target_data(file_name="test.ckl", key="ROLE", value="Member Server",target_list=target_values)
+ckl_editor.write_target_data(file_name="test.ckl", key="ROLE", value="Member Server")
 ```
 
 ---
@@ -129,14 +89,11 @@ Before running this module, you need to run the *load_vkey_data()* module and us
 | status            | The value that you want to set the status to.          | NotAFinding      | yes     
 | finding_details   | Any information you want to put in the finding details | The check returned no results.| yes   
 | comments          | Any information you want to put in the comments        | Fixed on July 4, 1776 | yes    
-| vkeylist          | The list of editable vkeys from *load_vkey_data()*     | load_vkey_data("test.txt")| yes
 
 ```python
 import ckl_editor
 
-vkeylist = ckl_editor.load_vkey_data("test.ckl")
-
-ckl_editor.write_vkey_data(file_name="test.ckl", key="V-230222", status="Not_Reviewed", finding_details="Server was patched.\nThis is not a finding", comments="No Comment.", vkeylist=vkeylist)
+ckl_editor.write_vkey_data(file_name="test.ckl", key="V-230222", status="Not_Reviewed", finding_details="Server was patched.\nThis is not a finding", comments="No Comment.")
 ```
 
 ---
