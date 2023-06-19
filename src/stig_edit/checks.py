@@ -1,23 +1,23 @@
-import xmltodict
+"""
+Module providing tests and error handling to prevent ckl file corruption and thaty it exists with 
+the correct permissions
+"""
+import os
 
-def check_file_and_keys(file_name, key, write_location, available_inputs):
-    
-    #Error out if the file is not found, is a directory, or incorrect permissions on the file
+def check_file_and_keys(file_name, key, available_inputs):
+
+    """Error out if the file is not found, is a directory, or incorrect permissions on the file"""
     try:
-        file = open(file_name, encoding='utf-8')
-    except FileNotFoundError as e:
+        with open(file_name, 'r', encoding='utf-8') as ckl:
+            if os.path.getsize(ckl) == 0:
+                raise ValueError('The CKL file is empty.')
+        #file = open(file_name, encoding='utf-8')
+    except FileNotFoundError:
         print(f'ERROR: File not found: {file_name}')
-    except IsADirectoryError as e:
+    except IsADirectoryError:
         print(f'ERROR: {file_name} is a directory and not a file.')
-    except PermissionError as e:
+    except PermissionError:
         print(f'Permission denied for file: {file_name}')
     else:
-        with open(file_name, 'r', encoding='utf-8') as ckl:
-            #ckl_dict = xmltodict.parse(ckl.read())
-            if write_location == 'target_data':
-                available_keys = available_inputs
-            elif write_location == 'vkey_data':
-                available_keys == available_inputs
-
-            if key not in available_keys:
-               raise Exception(f'{key} is not a valid key.') 
+        if key not in available_inputs:
+            raise ValueError(f'{key} is not a valid key.')
