@@ -1,10 +1,6 @@
 name: Test and publish python package to PyPi
 
-on:
-  push: 
-    branches:
-      - '*'
-      - '!main'
+on: [push]
 
 jobs:
   deploy:
