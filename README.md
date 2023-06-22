@@ -55,7 +55,7 @@ print(ckl_editor.read_target_data("test.ckl"))
 
 ---
 
-### **write_target_data**(*file_name*, *key*, *value*, *target_list*)
+### **write_target_data**(*file_name*, *key*, *value*)
 
 This module can write to any of the Target Data fields shown in the *Editable Fields/Target Data* section. Note the values because some fields must match a list of predefined values or the STIG Viewer will not be able to open the file.
 
@@ -76,7 +76,7 @@ ckl_editor.write_target_data(file_name="test.ckl", key="ROLE", value="Member Ser
 
 ---
 
-### **write_vkey_data**(*file_name*, *key*, *status*, *finding_details*, *comments*, *vkeylist*)
+### **write_vkey_data**(*file_name*, *key*, *status*, *finding_details*, *comments*)
 
 This module can write status, finding_details, and comments to any vkey that exists in your CKL file. It will error out if the vkey does not exists. Some of the fileds such as status have a list of predefined values you must use or the STIG Viewer will not be able to open the file.
 
